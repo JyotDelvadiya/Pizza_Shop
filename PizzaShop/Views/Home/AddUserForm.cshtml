@@ -1,0 +1,277 @@
+@{
+    ViewData["Title"] = "Add User";
+}
+@model PizzaShop.Data.ViewModel.AddUserVM
+
+<div class="addUserContent py-3 px-xs-1 px-sm-5 display-6">
+    <div class="d-flex flex-row w-100">
+        <div class="d-flex flex-row gap-2 justify-content-start w-50">
+            <div class="d-flex-inline pageTitle">Add New User</div>
+        </div>
+        <div class="d-flex flex-row gap-2 w-25 justify-content-end w-50">
+            <a asp-action="UserList" asp-controller="Home"
+                class="w-50 d-flex flex-row justify-content-end align-items-center">
+                <div class="d-flex flex-row justify-content-center align-items-center gap-2 backToUserList w-75 h-100">
+                    <img src="~/images/icons/arrow-left-3099.svg" class="backIcon p-0" alt="">
+                    <button class="backBtn d-flex justify-content-center p-0">Back</button>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="tableContainer px-3 bg-white py-5 my-3 shadow w-100">
+        <div class="container-fluid m-0">
+            <form asp-action="AddUserForm" asp-controller="Home" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger fs-6 m-0 p-0"></div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="Firstname" class="form-control" id="floatingFirstName" placeholder="John">
+                            <label asp-for="Firstname"></label>
+                            @* <span asp-validation-for="Firstname" class="text-danger fs-6 m-0 p-0"></span> *@
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Username" class="form-control" id="floatingUsername"
+                                placeholder="JohnDoe077">
+                            <label asp-for="Username"></label>
+                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger fs-6" })
+                            @* <span asp-validation-for="Username" class="text-danger fs-6 m-0 p-0"></span> *@
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Email" class="form-control" id="floatingEmail"
+                                placeholder="name@example.com">
+                            <label asp-for="Email"></label>
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger fs-6" })
+                            @* <span asp-validation-for="Email" class="text-danger fs-6 m-0 p-0"></span> *@
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-floating mb-3">
+                            <input asp-for="Lastname" class="form-control" id="floatingLastName" placeholder="Doe">
+                            <label asp-for="Lastname"></label>
+                            @* <span asp-validation-for="Lastname" class="text-danger fs-6 m-0 p-0"></span> *@
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select asp-for="Roleid" class="form-select" id="floatingRole">
+                                <option value="">Select Role</option>
+                                <option value="1">Super Admin</option>
+                                <option value="2">Account Manager</option>
+                                <option value="3">Chef</option>
+                            </select>
+                            <label asp-for="Roleid"></label>
+                            @* <span asp-validation-for="Roleid" class="text-danger fs-6 m-0 p-0"></span> *@
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label asp-for="Password"></label>
+                            
+                            @* <span asp-validation-for="Password" class="text-danger fs-6 m-0 p-0"></span> *@
+                        </div>
+                    </div>
+
+                    <div class="col-12 px-0 p-3 ms-3 border border-dashed rounded mb-4 text-center fs-6"
+                        style="max-width: 98%;">
+                        <div class="icon d-flex justify-content-center align-items-center">
+                            <i class="bi bi-cloud-arrow-up fs-1" style="color: #6c757d;"></i>
+                        </div>
+                        <div class="text mb-2">
+                            <label for="ProfileImageFile" class="btn btn-outline-secondary mb-0 border-0 fs-5"
+                                role="button">
+                                Browse files
+                            </label>
+                        </div>
+                        <input asp-for="ProfileImageFile" type="file" id="ProfileImageFile" class="form-control"
+                            style="display: none;" />
+                        @* <span asp-validation-for="ProfileImageFile" class="text-danger d-block mt-2"></span> *@
+                        <small class="text-muted d-block">Allowed formats: .jpg, .jpeg, .png, .gif (max 5MB)</small>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <div class="form-floating mb-3">
+                            <select asp-for="Country" class="form-select" id="countryDropdown">
+                                <option value="">Select Country</option>
+                                @foreach (var country in Model.Countries ?? new ())
+                                {
+                                    <option value="@country.Countryid">@country.Countryname</option>
+                                }
+                            </select>
+                            <label asp-for="Country"></label>
+                            @* <span asp-validation-for="Country" class="text-danger fs-6 m-0 p-0"></span> *@
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="form-floating mb-3">
+                            <select asp-for="State" class="form-select" id="stateDropdown">
+                                <option value="">Select State</option>
+                            </select>
+                            <label asp-for="State"></label>
+                            @* <span asp-validation-for="State" class="text-danger fs-6 m-0 p-0"></span> *@
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="form-floating mb-3">
+                            <select asp-for="City" class="form-select" id="cityDropdown">
+                                <option value="">Select City</option>
+                            </select>
+                            <label asp-for="City"></label>
+                            @* <span asp-validation-for="City" class="text-danger fs-6 m-0 p-0"></span> *@
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <div class="form-floating mb-3">
+                            <input asp-for="Zipcode" class="form-control" id="floatingZipcode" placeholder="12345">
+                            <label asp-for="Zipcode"></label>
+                            @* <span asp-validation-for="Zipcode" class="text-danger fs-6 m-0 p-0"></span> *@
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="form-floating">
+                            <textarea asp-for="Address" class="form-control h-auto" id="floatingAddress"
+                                placeholder="Add Address" style="height: 100px"></textarea>
+                            <label asp-for="Address"></label>
+                            @* <span asp-validation-for="Address" class="text-danger fs-6 m-0 p-0"></span> *@
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="form-floating mb-3">
+                            <input asp-for="Phonenumber" class="form-control" id="floatingPhone"
+                                placeholder="123-456-7890">
+                            <label asp-for="Phonenumber"></label>
+                            @Html.ValidationMessageFor(m => m.Phonenumber, "", new { @class = "text-danger fs-6" })
+                            @* <span asp-validation-for="Phonenumber" class="text-danger fs-6 m-0 p-0"></span> *@
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex-inline">
+                    <button type="submit" class="submitBtn">Create User</button>
+                    <button type="button" class="cancelBtn"
+                        onclick="location.href='@Url.Action("UserList", "Home")'">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $(document).ready(function () {
+            // Show filename when file is selected
+            $('#ProfileImageFile').change(function () {
+                var fileName = $(this).val().split('\\').pop();
+                if (fileName) {
+                    $('label[for="ProfileImageFile"]').text(fileName);
+                } else {
+                    $('label[for="ProfileImageFile"]').text('Browse files');
+                }
+            });
+
+            // Country-State-City cascading dropdowns
+            $('#countryDropdown').on('change', function () {
+                var countryId = $(this).val();
+                if (countryId) {
+                    $.ajax({
+                        url: `/Home/GetStatesByCountryId?countryId=${countryId}`,
+                        type: 'GET',
+                        success: function (data) {
+                            var stateDropdown = $('#stateDropdown');
+                            stateDropdown.empty();
+                            stateDropdown.append($('<option>').text('Select State').attr('value', ''));
+                            $.each(data, function (index, state) {
+                                stateDropdown.append($('<option>').text(state.statename).attr('value', state.stateid));
+                            });
+                        },
+                        error: function (error) {
+                            console.error('Error fetching states:', error);
+                        }
+                    });
+                } else {
+                    $('#stateDropdown').empty().append($('<option>').text('Select State').attr('value', ''));
+                    $('#cityDropdown').empty().append($('<option>').text('Select City').attr('value', ''));
+                }
+            });
+
+            $('#stateDropdown').on('change', function () {
+                var stateId = $(this).val();
+                if (stateId) {
+                    $.ajax({
+                        url: `/Home/GetCitiesByStateId?stateId=${stateId}`,
+                        type: 'GET',
+                        success: function (data) {
+                            var cityDropdown = $('#cityDropdown');
+                            cityDropdown.empty();
+                            cityDropdown.append($('<option>').text('Select City').attr('value', ''));
+                            $.each(data, function (index, city) {
+                                cityDropdown.append($('<option>').text(city.cityname).attr('value', city.cityid));
+                            });
+                        },
+                        error: function (error) {
+                            console.error('Error fetching cities:', error);
+                        }
+                    });
+                } else {
+                    $('#cityDropdown').empty().append($('<option>').text('Select City').attr('value', ''));
+                }
+            });
+
+            var selectedCountry = $('#countryDropdown').val();
+            if (selectedCountry) {
+                $('#countryDropdown').trigger('change');
+
+                // Store the previously selected state to reselect after loading
+                var selectedState = '@Model.State';
+
+                // Wait a moment for the states to load before attempting to select
+                setTimeout(function () {
+                    $('#stateDropdown').val(selectedState);
+                    // Then trigger state change to load cities
+                    $('#stateDropdown').trigger('change');
+
+                    // Store the previously selected city to reselect after loading
+                    var selectedCity = '@Model.City';
+
+                    // Wait a moment for cities to load before attempting to select
+                    setTimeout(function () {
+                        $('#cityDropdown').val(selectedCity);
+                    }, 500);
+                }, 500);
+            }
+
+            // Intercept form submission
+            $('form').on('submit', function (e) {
+                e.preventDefault(); // Prevent default form submission
+
+                // Clear previous toastr messages
+                toastr.clear();
+
+                // Validate the form using jQuery Validation
+                var $form = $(this);
+                if (!$form.valid()) {
+                    // Get all validation errors
+                    var errors = $form.validate().errorList;
+
+                    // Display each error using toastr
+                    errors.forEach(function (error) {
+                        toastr.warning(error.message);
+                    });
+
+                    return false; // Stop form submission
+                }
+
+                // If all validations pass, submit the form
+                this.submit();
+            });
+        });
+    </script>
+}

@@ -1,0 +1,933 @@
+/* LOGIN PAGE CSS */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.dashboardHeight {
+    height: 160px;
+}
+
+.dashboardBoxHeight {
+    height: 250px;
+}
+
+.dashboardAnalyticsHeight {
+    height: 200px;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+
+/* LOGINPAGE HERO IMAGE */
+.custom-image {
+    height: 100vh;
+}
+
+.custom-image img {
+    object-fit: cover !important;
+}
+
+.company-name {
+    text-align: center;
+    padding-top: 1.25vw;
+    font-size: 3vw;
+    font-weight: 500;
+    color: #0066b2;
+}
+
+/* LoginPage form section  */
+.custom-form-section {
+    height: 100vh;
+    padding: 0vw 8vw 0vw 8vw;
+    background-color: #E1EBEE;
+}
+
+.custom-form-section .heading {
+    padding: 2vw 0vw 0.5vw 0vw;
+}
+
+.custom-field img {
+    width: 1vw;
+}
+
+.custom-field .eye-img {
+    width: 1.25vw;
+}
+
+.custom-field {
+    border-radius: 10px;
+    padding: 0.2vw;
+    width: 100%;
+}
+
+.inputFiedContainer {
+    padding-bottom: 2vw !important;
+}
+
+.custom-field input {
+    font-size: 1.25vw;
+}
+
+.custom-field input:focus,
+.form-check-input:focus {
+    box-shadow: none;
+    border: 0cap;
+}
+
+.submit-btn button {
+    width: 100% !important;
+    margin-top: 1vw;
+    padding: 0.5vw;
+}
+
+
+@media screen and (max-width:991px) {
+    .hero-image-section {
+        display: none;
+    }
+
+    .company-name {
+        text-align: center;
+        padding-top: 4.75vw;
+        font-size: 5vw;
+        font-weight: 500;
+        color: #0066b2;
+    }
+
+
+    .custom-form-section {
+        width: 100% !important;
+        overflow: auto;
+        position: relative;
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    .custom-form-section::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        display: block;
+        background-image: url(../images/dominos_background.jpg);
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        -webkit-filter: blur(5px);
+        -moz-filter: blur(5px);
+        -o-filter: blur(5px);
+        -ms-filter: blur(5px);
+        filter: blur(5px);
+    }
+
+    .custom-form-section .heading {
+        padding: 2rem 0rem 0.5rem 0rem;
+        color: #E1EBEE;
+    }
+
+    .custom-field img {
+        width: 1rem;
+    }
+
+    .custom-field .eye-img {
+        width: 1.25rem;
+    }
+
+    .custom-field {
+        border-radius: 10px;
+        padding: 0.2rem;
+        width: 100%;
+        margin-bottom: 2rem !important;
+    }
+
+    .custom-field input {
+        font-size: 1.25rem;
+        color: #000000;
+    }
+
+    .form-check,
+    .form-check a {
+        color: #E1EBEE;
+    }
+
+    .submit-btn button {
+        width: 100% !important;
+        margin-top: 1rem;
+        padding: 0.5rem;
+    }
+}
+
+/* MAIN WEBSITE CSS */
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: none;
+}
+
+.btn-check:focus+.btn,
+.btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+.btn-close:focus {
+    outline: 0;
+    box-shadow: none;
+    opacity: 1;
+}
+
+.btn-close:hover {
+    transform: rotate(180deg);
+    transition: all 0.5s ease;
+}
+
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label,
+.form-floating>.form-select~label{
+    opacity: 1;
+}
+
+.form-floating>.form-control:focus, .form-floating>.form-control:not(:placeholder-shown) {
+    padding-top: 1.625rem;
+    padding-bottom: 1.5rem;
+}
+
+*,
+body {
+    padding: 0px;
+    margin: 0px;
+    max-width: 100%;
+}
+
+.header {
+    padding-right: 1em;
+    height: 6vh;
+    background-color: #0066a7;
+    box-shadow: 15px 5px 20px rgba(128, 128, 128, 0.448);
+}
+
+.userProfileImage {
+    height: 60%;
+}
+
+.toggle {
+    display: none !important;
+}
+
+.logoName {
+    text-align: center;
+    padding: 16px 0vw 0vw 10px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0066b2;
+}
+
+.header {
+    z-index: 1;
+}
+
+.nav-item .nav-link {
+    color: gray;
+}
+
+.nav-item .nav-link.active {
+    color: #0066b2;
+    background-color: rgba(233, 233, 233, 0.63);
+}
+
+.dashboardContent {
+    background-color: rgba(233, 233, 233, 0.63);
+    height: 100vh;
+}
+
+.pageTitle {
+    font-size: 1em;
+    font-weight: 700;
+    color: #0066b2;
+}
+
+/* USER LIST PAGE */
+
+.searchIcon {
+    width: 40px;
+    padding-right: 20px;
+}
+
+.searchBar {
+    border: none;
+    background-color: white;
+}
+
+.dashboardContent input {
+    /* border: none; */
+    background-color: white;
+}
+
+.addUser {
+    background-color: #0066b2;
+    color: white;
+    border: none;
+    width: 40%;
+    font-size: 18px;
+}
+
+.addUserBtn {
+    background-color: #0066b2;
+    color: white;
+    border: none;
+    font-size: 18px;
+}
+
+.addUserIcon {
+    width: 15px;
+    height: 15px;
+}
+
+.smallIcon {
+    width: 15px;
+    height: 15px;
+}
+
+.tableContainer {
+    height: auto;
+}
+
+.tbody tr td {
+    height: 100%;
+}
+
+.tableContainer tr th {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0066b2;
+}
+
+.tableContainer tbody th {
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
+}
+
+.tableContainer tr td {
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
+}
+
+/* 
+.tableContainer tr{
+    height: 1em;
+} */
+.table>:not(caption)>*>* {
+    padding: 1.25em 0em;
+}
+
+/* ROLE TABLE CSS */
+.roleTable>:not(caption)>*>* {
+    padding: 1.25em 0em;
+    width: 100%;
+}
+
+/* ROLE TABLE CSS END */
+
+.tableContainer td:nth-child(5) .c-table-status {
+    background-color: rgb(149, 207, 116);
+    color: white;
+    width: 80px;
+    height: 26px;
+    border-radius: 20px;
+}
+
+.tableContainer td:nth-child(5) .c-table-status-reject {
+    background-color: #FFF5F5;
+    color: #FF4545;
+    width: 50px;
+    height: 24px;
+    border-radius: 5px;
+}
+
+.tableContainer td:nth-child(5) .c-table-status-pending {
+    background-color: #F8F8F8;
+    color: #BABABA;
+    width: 50px;
+    height: 24px;
+    border-radius: 5px;
+}
+
+.tableContainer td:nth-child(6) .editUserIcon:hover {
+    transform: scale(1.2);
+    transition: transform 0.4s ease;
+
+}
+
+.tableContainer td:nth-child(6) .deleteUserIcon:hover {
+    transform: scale(1.2);
+    transition: transform 0.4s ease;
+}
+
+.tableContainer td:nth-child(1) img {
+    height: 20px;
+    width: 20px;
+}
+
+.tableContainer tbody th:nth-child(1) {
+    transform: translateY(6px);
+}
+
+.deleteBtn,
+.deleteBtn:hover {
+    background-color: #0066a7;
+    color: white;
+    border: 1px solid #0066b2;
+    width: 100px !important;
+    font-size: 18px;
+}
+
+.cancelBtnModal,
+.cancelBtnModal:hover {
+    background-color: white;
+    color: #0066b2;
+    border: 1px solid #0066b2;
+    width: 100px !important;
+    font-size: 18px;
+}
+
+.modal-body {
+    font-size: 18px;
+    color: rgb(60, 60, 60);
+}
+
+.modal-title {
+    font-size: 22px;
+    color: #0066b2;
+}
+
+.warningBtnModal {
+    height: 50px;
+    width: 50px;
+}
+
+.profileImg {
+    height: 26px;
+}
+
+
+/* ADD USER DETAILS PAGE */
+
+
+.backBtn {
+    background-color: white;
+    color: #0066b2;
+    border: none;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.backIcon {
+    width: 15px;
+    height: 15px;
+}
+
+.backToUserList {
+    background-color: white;
+    color: #0066b2;
+    border: 1px solid #0066b2;
+    width: 130px !important;
+    font-size: 18px;
+    min-width: 100px;
+    min-height: 40px;
+}
+
+.form-floating label {
+    font-size: 16px;
+}
+
+.form-control {
+    border: 0.5px solid rgb(200, 200, 200);
+    background-color: white;
+}
+
+.form-control:focus {
+    border-color: #0066a7;
+    box-shadow: 0 0 0 0rem rgba(13, 110, 253, .25);
+}
+
+.form-select:focus {
+    /* border: 1px solid #C8242F; */
+    border-color: #0066a7;
+    box-shadow: 0 0 0 0rem rgba(13, 110, 253, .25);
+}
+
+.form-floating>label {
+    transition: all 0.2s ease-in-out;
+}
+
+.form-floating>input:focus+label,
+.form-floating>input:not(:placeholder-shown)+label,
+.form-floating>textarea:focus+label,
+.form-floating>textarea:not(:placeholder-shown)+label {
+    transform: scale(0.75) translateY(-3rem) translateX(1rem);
+    background-color: rgb(255, 255, 255);
+    padding: 0px 4px 0px 4px;
+    height: 20px;
+    margin-left: 10px;
+    margin-top: -4px;
+}
+
+.form-floating>select:focus+label,
+.form-floating>select:not(:placeholder-shown)+label {
+    transform: scale(0.95) translateY(-0.75rem) translateX(0rem);
+    background-color: rgb(255, 255, 255);
+    padding: 0px 4px 0px 4px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.form-floating>.form-select {
+    padding: 5px 0px 4px 15px;
+}
+
+.submitBtn {
+    background-color: #0066b2;
+    color: white;
+    border: none;
+    width: 140px;
+    height: 46px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.cancelBtn {
+    background-color: white;
+    color: #0066b2;
+    border: 1px solid #0066b2;
+    width: 140px;
+    height: 46px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+
+/* ROLES AND PERMISSION PAGE */
+
+.rolesContainer td,
+.rolesContainer tr,
+.rolesContainer th {
+    border: none !important;
+}
+
+
+.rolesContainer {
+    height: auto;
+}
+
+.rolesContainer thead tr th {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0066b2;
+}
+
+.rolesContainer tbody th {
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
+}
+
+.rolesContainer tbody td img {
+    height: 20px;
+    width: 20px;
+}
+
+.rolesContainer tbody td {
+    padding: 0%;
+}
+
+/* PERMISSION PAGE */
+
+.permissionsContainer {
+    height: auto;
+}
+
+.permissionTable thead tr th {
+    padding-right: 26px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0066b2;
+}
+
+.permissionTable tbody th {
+    font-size: 12px;
+    font-weight: 500;
+    color: gray;
+}
+
+.permissionTable tbody td {
+    font-size: 18px;
+    /* justify-content: center;
+    align-items: center; */
+    padding: 10px 0px 5px 15px;
+}
+
+.permissionTable thead th:nth-child(1),
+.permissionTable tbody th:nth-child(1) {
+    max-width: 20px !important;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.flexSwitchCheckDefault {
+    border: 0.5px solid gray;
+    min-width: 50px;
+    height: 26px;
+    padding: auto;
+}
+
+.flexSwitchCheckDefault:checked {
+    background-color: #0066b2;
+    border-color: #0066a7;
+}
+
+.permissionContainer .form-floating label {
+    margin-top: 18px;
+    height: auto;
+}
+
+.permissionContainer .form-floating input {
+    background-color: rgba(221, 221, 221, 0.47);
+    border-color: #0066b2;
+}
+
+.permissionContainer .form-floating>input:focus+label,
+.permissionContainer .form-floating>input:not(:placeholder-shown)+label {
+    transform: scale(0.95) translateY(0.5rem) translateX(0rem);
+    background-color: white;
+    padding: 0px 4px 0px 4px !important;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.permissionContainer .form-floating>.form-control:not(:placeholder-shown) {
+    padding-top: 0.75rem !important;
+    padding-bottom: .625rem;
+}
+
+.form-check-input:focus {
+    box-shadow: none !important;
+}
+
+.savePermission {
+    background-color: #0066b2;
+    color: white;
+    border: none;
+    width: 140px;
+    height: 46px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.cancelPermission {
+    background-color: white;
+    color: #0066b2;
+    border: 1px solid #0066b2;
+    width: 140px;
+    height: 46px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+/* MENU PAGE */
+
+.itemsBtn {
+    border: none;
+    height: 46px;
+    font-size: 18px;
+    display: inline-flex;
+}
+
+.itemsBtn.active {
+    border-bottom: 2px solid #0066b2;
+}
+
+.itemsSearchBar,
+.itemsDeleteBar {
+    border: 1px solid #0066b2;
+}
+
+.itemsSearchBar input,
+.itemsDeleteBar input {
+    border: none;
+    background-color: white;
+}
+
+.dustbinIcon {
+    width: 40px;
+    padding: 8px;
+}
+
+.addCategoryBtn {
+    width: 40px;
+    padding: 8px;
+    border: 1px solid #0066b2;
+    border-radius: 5px;
+}
+
+.categoriesTitle,
+.itemsTitle {
+    font-size: 22px;
+}
+
+.categories {
+    font-size: 18px;
+}
+
+.category {
+    font-size: 18px;
+    padding: 10px;
+}
+
+.categories {
+    list-style-type: none;
+    padding: 5px 0px 5px 0px;
+}
+
+.categoriesContainer {
+    width: 250px;
+    background-color: rgba(237, 237, 237, 0.886);
+    border-right: 1px solid #0066b2;
+    height: 100%;
+}
+
+.cateoriesSidebar {
+    height: auto;
+}
+
+.category a {
+    color: gray;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.itemsTable {
+    max-width: 100%;
+}
+
+.itemsHeader {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0066b2;
+}
+
+.itemsTable tbody th {
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
+}
+
+.itemsTable tbody td {
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
+}
+
+.itemsTable tr th {
+    padding: 1.25em 0em;
+}
+
+.itemsTable tr td {
+    padding: 1.25em 0em;
+}
+
+.itemsTable tbody th:nth-child(1) {
+    transform: translateY(3px);
+}
+
+.itemsTable tbody td:nth-child(6) {
+    transform: translateY(0.5px);
+}
+
+.itemsTable tbody td:nth-child(3) {
+    color: green;
+}
+
+.itemsTable tbody td:nth-child(5) {
+    padding: 15px 0px 0px 0px;
+}
+
+.form-check.form-switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category.dragging {
+    opacity: 0.5;
+    background: #f0f0f0;
+}
+
+.category.drag-over {
+    border-left: 2px solid #000;
+}
+
+.drag-handle {
+    cursor: move;
+}
+
+.form-switch .form-check-input:focus {
+    --bs-form-switch-bg: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e);
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+    /* border-color: rgba(126, 239, 104, 0.8); */
+    /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6); */
+    outline: 0 none;
+}
+
+
+@media (max-width: 600px) {
+
+    .table {
+        display: block;
+        max-width: -moz-fit-content;
+        max-width: fit-content;
+        margin: 0 auto;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* th, td {
+        min-width: 200px; 
+    } */
+
+    .permissionTable thead th:nth-child(1),
+    .permissionTable tbody th:nth-child(1) {
+        max-width: 10% !important;
+    }
+
+    /* USER LIST */
+    .addUserBtn {
+        display: none !important;
+    }
+
+    .searchBar {
+        max-width: 50%;
+        min-width: 25% !important;
+    }
+
+    .itemsSearchBar {
+        max-width: 50%;
+        min-width: 15% !important;
+        margin-left: 10px;
+    }
+
+    .itemsDeleteBar {
+        max-width: 50%;
+        min-width: 15% !important;
+        margin-left: 10px;
+    }
+
+    .addUserBlock {
+        max-width: 25% !important;
+    }
+
+}
+
+@media screen and (max-width: 991px) {
+    .table {
+        display: block;
+        max-width: -moz-fit-content;
+        max-width: fit-content;
+        margin: 0 auto;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .tableContainer th,
+    td {
+        min-width: 250px;
+    }
+    .toggle {
+        display: block !important;
+        border-color: none;
+    }
+    .menuContainer {
+        z-index: 1 !important;
+    }
+    .toggle i {
+        font-size: 2em;
+        color: white;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+
+    /* MENU PAGE */
+    .categoriesContainer {
+        width: 100%;
+    }
+    .itemsTable tbody td:nth-child(2),
+    .itemsTable thead th:nth-child(2) {
+        display: none !important;
+    }
+    /* PERMISSION PAGE */
+    .permissionContainer .form-floating label {
+        margin-top: 0px;
+        height: auto;
+        /* min-width: 100% !important; */
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .sidebar {
+        height: 100vh;
+        background-color: white;
+        transition: transform 0.3s ease;
+        box-shadow: 1px 10px 20px rgba(128, 128, 128, 0.448);
+        min-width: 250px;
+        z-index: 999;
+    }
+    .offcanvas button {
+        display: none;
+    }
+}

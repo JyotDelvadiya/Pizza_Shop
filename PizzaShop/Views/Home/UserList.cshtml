@@ -1,0 +1,304 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<PizzaShop.Data.ViewModel.UserListVM>
+
+<div class="dashboardContent py-3 px-5 display-6">
+    <div class="d-flex flex-row justify-content-between">
+        <div class="d-flex flex-row gap-2">
+            <div class="d-flex-inline pageTitle">Users</div>
+        </div>
+        <div class="d-flex flex-row gap-2 justify-content-end">
+            <div class="d-flex flex-row gap-2 searchBar">
+                <input type="text" class="form-control border-0" id="searchInput" placeholder="Search">
+                <img src="~/images/icons/magnifying-glass-solid.svg" class="searchIcon" alt="">
+            </div>
+            <a asp-action="AddUserForm" asp-controller="Home" class="addUserBlock w-50">
+                <div class="d-flex flex-row justify-content-center align-items-center gap-2 addUser w-100 h-100">
+                    <img src="~/images/icons/plus-solid.svg" class="addUserIcon object-fit-cover p-0" alt="">
+                    <button class="addUserBtn d-flex justify-content-center p-0">Add User</button>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="tableContainer px-3 bg-white my-3 shadow">
+        <table id="myTable" class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="d-flex justify-content-start gap-2 align-items-center">Name
+                        <img src="~/images/icons/up-down.png" class="smallIcon" alt="">
+                    </th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col" class="d-flex justify-content-start gap-2 align-items-center">Role
+                        <img src="~/images/icons/up-down.png" class="smallIcon" alt="">
+                    </th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                @foreach (var item in Model)
+                {
+                    <tr class="table-row">
+                        <th scope="row" class="d-flex justify-content-start gap-2 align-items-center">
+                            <img src="@(string.IsNullOrEmpty(item.Profileimage) ? "/images/Default_pfp.svg.png" : item.Profileimage)"
+                                class="profileImg rounded rounded-circle object-fit-cover" alt="" width="30"
+                                height="30" alt="Profile Image">@Html.DisplayFor(modelItem => item.Firstname) @Html.DisplayFor(modelItem =>
+                            item.Lastname)
+                    </th>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Phonenumber)</td>
+                    <td>@Html.DisplayFor(modelItem => item.RoleName)</td>
+                    <td>
+                        @if (item.Status == 1)
+                            {
+                                <div class="c-table-status d-flex align-items-center justify-content-center text-start">
+                                    Active
+                                </div>
+                            }
+                            else
+                            {
+                                <div
+                                    class="c-table-status d-flex align-items-center justify-content-center text-start bg-danger">
+                                    Inactive
+                                </div>
+                            }
+                        </td>
+                        <td class="d-flex justify-content-start gap-2 h-100 align-items-center">
+                            <a href="/Home/EditUserForm?userId=@item.Userid">
+                                <img src="~/images/icons/pen-to-square-solid.svg" style="width: 18px;" class="editUserIcon"
+                                    alt="" id="EditUserBtn">
+                            </a>
+                            <img src="~/images/icons/trash-solid.svg" style="width: 16px;" class="deleteUserIcon" alt=""
+                                data-bs-toggle="modal" data-bs-target="#deleteUserModal" onclick="DeleteUser('@item.Email')">
+                        </td>
+                    </tr>
+                }
+                    <div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content bg-white">
+                                <div class="modal-header border-bottom-0">
+                                    <h5 class="modal-title" id="deleteUserModalLabel">Delete Confirmation </h5>
+                                    <button type="button" class="btn-close h-50" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <img src="~/images/toppng.com-warning-icon-2400x2400.png" class="warningBtnModal"
+                                        alt="">
+                                </div>
+                                <div class="modal-body pt-0 d-flex justify-content-center">
+                                    Are you sure you want to Delete?
+                                </div>
+                                <div class="modal-footer border-top-0 d-flex justify-content-center">
+                                    <button type="button" class="btn cancelBtnModal" data-bs-dismiss="modal">Cancel</button>
+                                    <a  class="btn deleteBtn">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-end align-items-center my-3 px-2 py-3">
+            <div class="d-flex align-items-center">
+                <span class="me-2 fs-5">Items Per page:</span>
+                <select id="itemsPerPage" class="form-select form-select-sm me-3" style="width: auto;">
+                    <option value="5" selected>5</option>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+            <div>
+                <span class="me-3 fs-5 d-flex align-items-center">Showing <span id="showing-start">1</span> - <span
+                        id="showing-end">5</span> of <span id="total-entries">13</span></span>
+            </div>
+            <div class="pagination-nav d-flex align-items-center">
+                <button class="btn btn-outline-secondary btn-sm" id="prev-page" aria-label="Previous page">
+                    <span aria-hidden="true">&lt;</span>
+                </button>
+                <button class="btn btn-outline-secondary btn-sm ms-1" id="next-page" aria-label="Next page">
+                    <span aria-hidden="true">&gt;</span>
+                </button>
+            </div>
+        </div>
+        <!-- End Pagination -->
+    </div>
+</div>
+<script>
+    function DeleteUser(email) {
+        // Store the email in a global variable or data attribute
+        window.userEmailToDelete = email;
+    }
+    document.querySelector('.deleteBtn').addEventListener('click', function() {
+        if (userEmailToDelete) {
+            // Make AJAX call to delete the user
+            $.ajax({
+                url: '/Home/DeleteUser',
+                type: 'POST',
+                data: { email: userEmailToDelete },
+                success: function (response) {
+                    $('#deleteUserModal').modal('hide');
+                    toastr.success(response.message)
+                    location.reload();
+                },
+                error: function (error) {
+                    toastr.error(response.message);
+                }
+            });
+        }
+    });
+
+    const searchInput = document.getElementById('searchInput');
+    const tableBody = document.getElementById('tableBody');
+    const itemsPerPageSelect = document.getElementById('itemsPerPage');
+    let timeoutId;
+
+    // Pagination variables
+    let currentPage = 1;
+    let rowsPerPage = parseInt(itemsPerPageSelect.value);
+    let totalRows = 0;
+    let allUsers = [];
+
+    // Initialize pagination
+    function initializePagination() {
+        const rows = document.querySelectorAll('#tableBody tr');
+        totalRows = rows.length;
+        allUsers = [];
+
+        // Save all current users to array
+        rows.forEach(row => {
+            const userRow = row.outerHTML;
+            allUsers.push(userRow);
+        });
+
+        updatePaginationControls();
+        displayTableRows();
+    }
+
+    // Update pagination info and controls
+    function updatePaginationControls() {
+        const totalPages = Math.ceil(totalRows / rowsPerPage);
+        document.getElementById('total-entries').textContent = totalRows;
+
+        // Update showing X to Y text
+        const start = totalRows === 0 ? 0 : ((currentPage - 1) * rowsPerPage) + 1;
+        const end = Math.min(currentPage * rowsPerPage, totalRows);
+        document.getElementById('showing-start').textContent = start;
+        document.getElementById('showing-end').textContent = end;
+
+        // Enable/disable prev/next buttons
+        document.getElementById('prev-page').disabled = currentPage === 1;
+        document.getElementById('next-page').disabled = currentPage === totalPages || totalPages === 0;
+    }
+
+    // Display rows for current page
+    function displayTableRows() {
+        tableBody.innerHTML = ''; // Clear current rows
+
+        if (totalRows === 0) {
+            return; // No data to show
+        }
+
+        const start = (currentPage - 1) * rowsPerPage;
+        const end = Math.min(start + rowsPerPage, totalRows);
+
+        for (let i = start; i < end; i++) {
+            tableBody.innerHTML += allUsers[i];
+        }
+    }
+
+    // Items per page change event
+    itemsPerPageSelect.addEventListener('change', function () {
+        rowsPerPage = parseInt(this.value);
+        currentPage = 1; // Reset to first page when changing items per page
+        updatePaginationControls();
+        displayTableRows();
+    });
+
+    // Previous page button
+    document.getElementById('prev-page').addEventListener('click', function (e) {
+        e.preventDefault();
+        if (currentPage > 1) {
+            currentPage--;
+            updatePaginationControls();
+            displayTableRows();
+        }
+    });
+
+    // Next page button
+    document.getElementById('next-page').addEventListener('click', function (e) {
+        e.preventDefault();
+        const totalPages = Math.ceil(totalRows / rowsPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            updatePaginationControls();
+            displayTableRows();
+        }
+    });
+
+    // Initialize pagination on load
+    initializePagination();
+
+    // Search functionality with pagination
+    searchInput.addEventListener('input', function () {
+        clearTimeout(timeoutId);
+
+        // Add small delay to prevent too many requests
+        timeoutId = setTimeout(() => {
+            const searchTerm = searchInput.value;
+            currentPage = 1; // Reset to first page on new search
+
+            fetch(`/Home/SearchUsers?searchTerm=${encodeURIComponent(searchTerm)}`)
+                .then(response => response.json())
+                .then(data => {
+                    tableBody.innerHTML = ''; // Clear current rows
+                    allUsers = []; // Reset all users array
+
+                    data.forEach(user => {
+                        const row = `
+                        <tr class="table-row">
+                            <th scope="row" class="d-flex justify-content-start gap-2 align-items-center">
+                                <img src="${user.profileimage?user.profileimage:"/images/Default_pfp.svg.png"}" 
+                                class="profileImg rounded rounded-circle object-fit-cover"
+                                alt="Profile Image" 
+                                width="30" 
+                                height="30">
+                                ${user.firstname} ${user.lastname}
+                            </th>
+                            <td>${user.email}</td>
+                            <td>${user.phonenumber}</td>
+                            <td>${user.roleName}</td>
+                            <td>
+                                ${user.status === 1 ?
+                                `<div class="c-table-status d-flex align-items-center justify-content-center text-start">
+                                        Active
+                                    </div>` :
+                                `<div class="c-table-status d-flex align-items-center justify-content-center text-start bg-danger">
+                                        Inactive
+                                    </div>`
+                            }
+                            </td>
+                            <td class="d-flex justify-content-start gap-2 h-100 align-items-center">
+                                <a href="/Home/EditUserForm?userId=${user.userid}">
+                                    <img src="/images/icons/pen-to-square-solid.svg" style="width: 18px;" class="editUserIcon" alt="">
+                                </a>
+                                <img src="/images/icons/trash-solid.svg" style="width: 16px;" class="deleteUserIcon" alt=""
+                                    data-bs-toggle="modal" data-bs-target="#deleteUserModal" onclick="DeleteUser('${user.email}')">
+                            </td>
+                        </tr>
+                    `;
+                        allUsers.push(row);
+                    });
+
+                    totalRows = allUsers.length;
+                    updatePaginationControls();
+                    displayTableRows();
+                })
+                .catch(error => console.error('Error:', error));
+        }, 300); // 300ms delay
+    });
+</script>
