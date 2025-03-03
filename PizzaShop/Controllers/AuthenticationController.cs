@@ -15,8 +15,6 @@ namespace PizzaShop.Controllers;
 
 public class AuthenticationController : Controller
 {
-    private readonly PizzaShopDbContext _context;
-
     private readonly IEmailService _emailService;
 
     private readonly IAuthService _authService;
@@ -30,7 +28,6 @@ public class AuthenticationController : Controller
 
     public AuthenticationController(PizzaShopDbContext context, IEmailService emailService, IConfiguration configuration, IAccountService accountService, IGenerateJwt generateJWT, IAuthService authService)
     {
-        _context = context;
         _emailService = emailService;
         _configuration = configuration;
         _accountService = accountService;

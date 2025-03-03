@@ -1,32 +1,54 @@
 // using System.Collections.Generic;
 // using System.Linq;
 // using System.Threading.Tasks;
-// using PizzaShop.Business.Interface;
+// using Microsoft.EntityFrameworkCore;
+// using Org.BouncyCastle.Crypto.Engines;
+// using PizzaShop.Data.Data;
 // using PizzaShop.Data.Models;
+// using PizzaShop.Data.ViewModel;
+// using PizzaShop.Business.Interface;
 
 // public class PermissionService : IPermissionService
 // {
-//     private readonly IPermissionService _permissionService;
-//     private readonly IRolePermissionService _rolePermissionService;
+//     private readonly PizzaShopDbContext _context;
 
-//     public PermissionService(IPermissionService permissionService, IRolePermissionService rolePermissionService)
+//     public PermissionService(PizzaShopDbContext context)
 //     {
-//         _permissionService = permissionService;
-//         _rolePermissionService = rolePermissionService;
+//         _context = context;
 //     }
 
-//     public async Task<IEnumerable<Permission>> GetAllPermissionsAsync()
+//     public async Task<RolePermissionVM> GetRolePermissionsAsync(int roleId)
 //     {
-//         return await _permissionService.GetAllPermissionsAsync();
-//     }
+//         var role = await _context.Roles.FindAsync(roleId);
+//         if (role == null) return null;
 
-//     public async Task<IEnumerable<Rolepermission>> GetPermissionsByRoleIdAsync(int roleId)
-//     {
-//         return await _rolePermissionService.GetPermissionsByRoleIdAsync(roleId);
+//         var permissions = await _context.Permissions.ToListAsync();
+//         var assignedPermissions = await _context.Rolepermissions
+//                                                 .Where(rp => rp.Roleid == roleId)
+//                                                 .Select(rp => rp.Permissionid)
+//                                                 .ToListAsync();
+
+//         return new RolePermissionVM
+//         {
+//             RoleId = roleId,
+//             RoleName = role.Rolename,
+//             Permissions = permissions,
+//             AssignedPermissionIds = assignedPermissions
+//         };
 //     }
 
 //     public async Task AssignPermissionsToRoleAsync(int roleId, List<int> permissionIds)
 //     {
-//         await _rolePermissionService.AssignPermissionsToRoleAsync(roleId, permissionIds);
+//         var existingPermissions = _context.Rolepermissions.Where(rp => rp.Roleid == roleId);
+//         _context.Rolepermissions.RemoveRange(existingPermissions);
+
+//         var newRolePermissions = permissionIds.Select(pid => new Rolepermission
+//         {
+//             Roleid = roleId,
+//             Permissionid = pid
+//         });
+
+//         await _context.Rolepermissions.AddRangeAsync(newRolePermissions);
+//         await _context.SaveChangesAsync();
 //     }
 // }

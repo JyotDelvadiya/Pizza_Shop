@@ -3,7 +3,6 @@
 // using System.Linq;
 // using System.Threading.Tasks;
 // using PizzaShop.Business.Interface;
-// using PizzaShop.Data.ViewModel;
 
 // public class PermissionController : Controller
 // {
@@ -21,17 +20,7 @@
 //         var role = await _roleService.GetRoleByIdAsync(roleId);
 //         if (role == null) return NotFound();
 
-//         var permissions = await _permissionService.GetAllPermissionsAsync();
-//         var assignedPermissions = await _permissionService.GetPermissionsByRoleIdAsync(roleId);
-
-//         var viewModel = new RolePermissionViewModel
-//         {
-//             RoleId = roleId,
-//             RoleName = role.Name,
-//             Permissions = permissions,
-//             AssignedPermissionIds = assignedPermissions.Select(rp => rp.PermissionId).ToList()
-//         };
-
+//         var viewModel = await _permissionService.GetRolePermissionsAsync(roleId);
 //         return View(viewModel);
 //     }
 

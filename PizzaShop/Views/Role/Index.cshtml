@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<PizzaShop.Data.Models.Role>
+
+<div class="dashboardContent py-3 px-5 display-6">
+    <div class="d-flex pageTitle">Roles</div>
+    <div class="rolesContainer px-3 bg-white my-3 shadow">
+        <table class="roleTable">
+            <thead style="border-bottom: 1px solid #0066b2;">
+                <tr>
+                    <th scope="col">Role</th>
+                    <th scope="col" class="d-flex justify-content-end">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.Rolename</th>
+                        <td class="d-flex justify-content-end">
+                            <a href="/Role/Permissions?roleId=@item.Roleid">
+                                <img src="~/images/icons/pen-to-square-solid.svg"  alt="">
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

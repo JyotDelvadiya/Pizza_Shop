@@ -1273,19 +1273,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/jyotdelvadiya/.nuget/packages/": {}
+    "C:\\Users\\pct205\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jyotdelvadiya/Desktop/PizzaShop_3Tier/Pizza_Shop/PizzaShop.Data/PizzaShop.Data.csproj",
+      "projectUniqueName": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj",
       "projectName": "PizzaShop.Data",
-      "projectPath": "/Users/jyotdelvadiya/Desktop/PizzaShop_3Tier/Pizza_Shop/PizzaShop.Data/PizzaShop.Data.csproj",
-      "packagesPath": "/Users/jyotdelvadiya/.nuget/packages/",
-      "outputPath": "/Users/jyotdelvadiya/Desktop/PizzaShop_3Tier/Pizza_Shop/PizzaShop.Data/obj/",
+      "projectPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj",
+      "packagesPath": "C:\\Users\\pct205\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/jyotdelvadiya/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\pct205\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -1340,22 +1340,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[7.0.19, 7.0.19]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[7.0.19, 7.0.19]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.300/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
       }
     }
   }

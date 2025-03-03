@@ -1,67 +1,57 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using PizzaShop.Data;
 using PizzaShop.Business.Interface;
-using PizzaShop.Business.Services;
-using PizzaShop.Data.Models;
 using PizzaShop.Data.ViewModel;
-using PizzaShop.Data.Data;
 
 namespace PizzaShop.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly PizzaShopDbContext _context;
     private readonly IGenerateJwt _generateJWT;
     private readonly IUserService _userService;
     private readonly IEmailService _emailService;
-
-
-    public HomeController(ILogger<HomeController> logger, PizzaShopDbContext context, IGenerateJwt generateJWT, IUserService userService, IEmailService emailService)
+    private readonly ILocationService _locationService;
+    public HomeController(ILogger<HomeController> logger, IGenerateJwt generateJWT, IUserService userService, IEmailService emailService, ILocationService locationService)
     {
         _logger = logger;
         _emailService = emailService;
-        _context = context;
         _generateJWT = generateJWT;
         _userService = userService;
+        _locationService = locationService;
     }
 
-    [Authorize(Roles = "Account Manager")]
+     [HttpGet]
     public IActionResult Index()
     {
-        var accountId = _generateJWT.GetAccountidFromJwtToken(Request.Cookies["JWT"]);
-
-        var AccountDetails = _context.Accounts.FirstOrDefault(x => x.Accountid == accountId) ?? new();
-        var UserDetails = _context.Users.FirstOrDefault(x => x.Accountid == accountId) ?? new();
-
-        ViewBag.UserName = AccountDetails.Username;
-        ViewBag.Profileimage = UserDetails.Profileimage;
-
+        var jwtToken = Request.Cookies["JWT"];
+        var dashboardData = _userService.GetDashboardData(jwtToken);
+        
+        ViewBag.UserName = dashboardData.UserName;
+        ViewBag.Profileimage = dashboardData.ProfileImage;
+        
         return View();
     }
 
-    [Authorize(Roles = "Account Manager")]
-    public IActionResult Roles()
-    {
-        var Roles = _context.Roles.Select(x => new RolesVM
-        {
-            Roleid = x.Roleid,
-            Rolename = x.Rolename
-        }).ToList();
-        return View(Roles);
-    }
+    // [Authorize(Roles = "Account Manager")]
+    // public IActionResult Roles()
+    // {
+    //     var Roles = _context.Roles.Select(x => new RolesVM
+    //     {
+    //         Roleid = x.Roleid,
+    //         Rolename = x.Rolename
+    //     }).ToList();
+    //     return View(Roles);
+    // }
 
-    [Authorize(Roles = "Account Manager")]
-    [HttpPost]
-    public IActionResult EditPermissions(int RoleID)
-    {
-        var Role = _context.Roles.FirstOrDefault(x => x.Roleid == RoleID);
-        return View(Role);
-    }
+    // [Authorize(Roles = "Account Manager")]
+    // [HttpPost]
+    // public IActionResult EditPermissions(int RoleID)
+    // {
+    //     var Role = _context.Roles.FirstOrDefault(x => x.Roleid == RoleID);
+    //     return View(Role);
+    // }
 
     // [Authorize(Roles = "Account Manager")]
     // [HttpPost]
@@ -264,7 +254,6 @@ public class HomeController : Controller
 
     //     return View(EditUserDetails);
     // }
-
 
     [HttpGet]
     public IActionResult EditUserForm(int userId)
@@ -509,18 +498,18 @@ public class HomeController : Controller
         return Json(userListDetails);
     }
 
-    [HttpGet]
-    public IActionResult GetStatesByCountryId(int countryId)
+   [HttpGet]
+    public async Task<IActionResult> GetStatesByCountryId(int countryId)
     {
-        var states = _context.States.Where(s => s.Countryid == countryId).ToList();
-        return Json(states);
+        var states = await _locationService.GetStatesByCountryIdAsync(countryId);
+        return Ok(states);
     }
 
     [HttpGet]
-    public IActionResult GetCitiesByStateId(int stateId)
+    public async Task<IActionResult> GetCitiesByStateId(int stateId)
     {
-        var cities = _context.Cities.Where(c => c.Stateid == stateId).ToList();
-        return Json(cities);
+        var cities = await _locationService.GetCitiesByStateIdAsync(stateId);
+        return Ok(cities);
     }
 
     // [Authorize(Roles = "Account Manager")]

@@ -1583,19 +1583,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/jyotdelvadiya/.nuget/packages/": {}
+    "C:\\Users\\pct205\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jyotdelvadiya/Desktop/PizzaShop_3Tier/Pizza_Shop/PizzaShop.Business/PizzaShop.Business.csproj",
+      "projectUniqueName": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj",
       "projectName": "PizzaShop.Business",
-      "projectPath": "/Users/jyotdelvadiya/Desktop/PizzaShop_3Tier/Pizza_Shop/PizzaShop.Business/PizzaShop.Business.csproj",
-      "packagesPath": "/Users/jyotdelvadiya/.nuget/packages/",
-      "outputPath": "/Users/jyotdelvadiya/Desktop/PizzaShop_3Tier/Pizza_Shop/PizzaShop.Business/obj/",
+      "projectPath": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj",
+      "packagesPath": "C:\\Users\\pct205\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/jyotdelvadiya/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\pct205\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -1607,8 +1607,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/jyotdelvadiya/Desktop/PizzaShop_3Tier/Pizza_Shop/PizzaShop.Data/PizzaShop.Data.csproj": {
-              "projectPath": "/Users/jyotdelvadiya/Desktop/PizzaShop_3Tier/Pizza_Shop/PizzaShop.Data/PizzaShop.Data.csproj"
+            "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj": {
+              "projectPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj"
             }
           }
         }
@@ -1656,22 +1656,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[7.0.19, 7.0.19]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[7.0.19, 7.0.19]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.300/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
       }
     }
   },

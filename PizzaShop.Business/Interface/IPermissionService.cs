@@ -1,10 +1,9 @@
 // using System.Collections.Generic;
 // using System.Threading.Tasks;
-// using PizzaShop.Data.Models;
+// using PizzaShop.Data.ViewModel;
 
 // public interface IPermissionService
 // {
-//     Task<IEnumerable<Permission>> GetAllPermissionsAsync();
-//     Task<IEnumerable<Rolepermission>> GetPermissionsByRoleIdAsync(int roleId);
+//     Task<RolePermissionVM> GetRolePermissionsAsync(int roleId);
 //     Task AssignPermissionsToRoleAsync(int roleId, List<int> permissionIds);
 // }

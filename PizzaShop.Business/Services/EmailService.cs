@@ -10,12 +10,12 @@ public class EmailService : IEmailService
 {
     private readonly IConfiguration _configuration;
 
-    private readonly PizzaShopDbContext _context;
+    private readonly IAccountRepository _accountRepository;
 
-    public EmailService(IConfiguration configuration, PizzaShopDbContext context)
+    public EmailService(IConfiguration configuration, IAccountRepository accountRepository)
     {
         _configuration = configuration;
-        _context = context;
+        _accountRepository = accountRepository;
     }
 
     public async Task SendEmailAsync(string toEmail, string subject, string message)
@@ -115,9 +115,9 @@ public class EmailService : IEmailService
 
     public async Task<bool> SendMailServiceAsync(string email)
     {
-        var userExists = _context.Accounts.Any(u => u.Email == email);
+        var userExists = await _accountRepository.GetAccountByEmailAsync(email);
 
-        if (userExists)
+        if (userExists != null)
         {
             // Generate a password reset token (you'll need to implement this)
             string token = Guid.NewGuid().ToString();

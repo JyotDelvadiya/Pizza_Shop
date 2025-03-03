@@ -16,4 +16,5 @@ public interface IUserService
     AddUserVM GetAddUserForm();
     (bool Success, Dictionary<string, string> Errors) UpdateUser(EditUserVM editUserDetails);
     (bool Success, string Message) DeleteUser(string email);
+    DashboardVM GetDashboardData(string jwtToken);  
 }

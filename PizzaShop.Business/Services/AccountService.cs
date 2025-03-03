@@ -1,33 +1,29 @@
 using Microsoft.EntityFrameworkCore;
+using PizzaShop.Business.Interface;
 using PizzaShop.Data.Data;
 using PizzaShop.Data.Models;
 
 public class AccountService : IAccountService
 {
-    private readonly PizzaShopDbContext _context;
+    private readonly IAccountRepository _accountRepository;
 
-    public AccountService(PizzaShopDbContext context)
+    public AccountService(IAccountRepository accountRepository)
     {
-        _context = context;
+        _accountRepository = accountRepository;
     }
     public async Task<bool> ResetPasswordAsync(string email, string newPassword)
     {
-        var account = await _context.Accounts.FirstOrDefaultAsync(a => 
-            a.Email == email 
-        );
+        var account = await _accountRepository.GetAccountByEmailAsync(email);
 
         if (account == null)
         {
             return false;
         }
 
-        // Hash the new password
         account.Password = HashPassword(newPassword);
 
-        await _context.SaveChangesAsync();
-        return true;
+        return await _accountRepository.UpdateAccountPasswordAsync(account);
     }
-
     private string HashPassword(string password)
     {
         // Implement your password hashing logic here
