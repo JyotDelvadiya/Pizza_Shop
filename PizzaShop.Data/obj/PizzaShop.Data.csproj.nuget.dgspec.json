@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj": {}
+    "/Users/jyotdelvadiya/Desktop/PizzaShop_3Tier/Pizza_Shop/PizzaShop.Data/PizzaShop.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj": {
+    "/Users/jyotdelvadiya/Desktop/PizzaShop_3Tier/Pizza_Shop/PizzaShop.Data/PizzaShop.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj",
+        "projectUniqueName": "/Users/jyotdelvadiya/Desktop/PizzaShop_3Tier/Pizza_Shop/PizzaShop.Data/PizzaShop.Data.csproj",
         "projectName": "PizzaShop.Data",
-        "projectPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj",
-        "packagesPath": "C:\\Users\\pct205\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\obj\\",
+        "projectPath": "/Users/jyotdelvadiya/Desktop/PizzaShop_3Tier/Pizza_Shop/PizzaShop.Data/PizzaShop.Data.csproj",
+        "packagesPath": "/Users/jyotdelvadiya/.nuget/packages/",
+        "outputPath": "/Users/jyotdelvadiya/Desktop/PizzaShop_3Tier/Pizza_Shop/PizzaShop.Data/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\pct205\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/jyotdelvadiya/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -69,12 +69,22 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.19, 7.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.19, 7.0.19]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.300/RuntimeIdentifierGraph.json"
         }
       }
     }

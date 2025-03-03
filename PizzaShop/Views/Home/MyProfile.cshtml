@@ -14,13 +14,6 @@
         <img src="~/images/profile_div_bg.jpg" class="card-img-top" style="height: 80px;" alt="">
         <div class="card-body pt-0 pb-3">
             <div class="d-flex align-items-end">
-                @* <div class="position-relative" style="margin-top: -50px;">
-                    <img src="~/images/Default_pfp.svg.png" class="rounded-circle border border-3 border-white bg-light"
-                        width="120" height="120" alt="Profile Avatar">
-                    <span class="position-absolute bottom-0 end-0 p-1 rounded-circle">
-                        <i class="bi bi-camera-fill text-dark small"></i>
-                    </span>
-                </div> *@
                 <div class="position-relative" style="margin-top: -50px;">
                     <img src="@(string.IsNullOrEmpty(Model.Profileimage) ? "/images/Default_pfp.svg.png" : Model.Profileimage)"
                         class="rounded-circle border border-3 border-white bg-light" width="120" height="120"
