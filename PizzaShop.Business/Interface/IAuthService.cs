@@ -4,5 +4,5 @@ namespace PizzaShop.Business.Interface;
 
 public interface IAuthService
 {
-    Task<(int status,string token)> Login (LoginVM user);
+    Task<(int status,string token)> Login (LoginVM user, TimeSpan? tokenExpiration = null);
 }

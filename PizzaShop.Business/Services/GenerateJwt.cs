@@ -14,7 +14,7 @@ public class GenerateJwt : IGenerateJwt
     {
         _configuration=configuration;
     }
-    public string GenerateJwtToken(Account user,string role)
+    public string GenerateJwtToken(Account user,string role, TimeSpan? expirationTime = null)
     {
        var claims = new List<Claim>
             {
@@ -34,12 +34,13 @@ public class GenerateJwt : IGenerateJwt
         }
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ICZasdklfjhacknHLisdfnLsdhoSfal4k2342s134k2dfcna234023q42e4w4rIFAKn"));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        var expiryTime = DateTime.Now.Add(expirationTime ?? TimeSpan.FromMinutes(30));
 
         var token = new JwtSecurityToken(
             issuer: "https://localhost:7095/",
             audience: "https://localhost:7095/",
             claims: claims,
-            expires: DateTime.Now.AddMinutes(30),
+            expires: expiryTime,
             signingCredentials: creds);
 
         return new JwtSecurityTokenHandler().WriteToken(token);

@@ -32,7 +32,7 @@ public class RoleController : Controller
         return View(role);
     }
 
-    [Authorize(Roles = "Admin, Account Manager")]
+    [Authorize(Roles = "Account Manager")]
     [HttpPost]
     public async Task<IActionResult> UpdatePermissions([FromBody] PermissionMatrixVM model)
     {

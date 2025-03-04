@@ -31,7 +31,7 @@ namespace PizzaShop.Data.ViewModel
         public string Username { get; set; } = null!;
 
         [Required(ErrorMessage = "Phone number is required")]
-        [RegularExpression(@"^[6-9]\d{9}$", ErrorMessage = "Please enter a valid 10-digit Indian mobile number")]
+        [RegularExpression(@"^[0-9]{10,15}$", ErrorMessage = "Please enter a valid Mobile number")]
         [Display(Name = "Phone Number")]
         [Column("phonenumber")]
         public string? Phonenumber { get; set; }

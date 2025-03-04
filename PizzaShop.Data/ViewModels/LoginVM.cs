@@ -21,8 +21,5 @@ namespace PizzaShop.Data.ViewModel
         [Column("password")]
         [StringLength(255)]
         public string Password { get; set; } = null!;
-
-        // public string? ResetPasswordToken { get; set; }
-        // public DateTime? ResetPasswordTokenExpiry { get; set; }
     }
 }

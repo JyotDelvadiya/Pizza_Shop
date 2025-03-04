@@ -1,0 +1,16 @@
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\bin\Debug\net7.0\PizzaShop.Business.deps.json
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\bin\Debug\net7.0\PizzaShop.Business.dll
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\bin\Debug\net7.0\PizzaShop.Business.pdb
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\bin\Debug\net7.0\PizzaShop.Data.dll
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\bin\Debug\net7.0\PizzaShop.Data.pdb
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\obj\Debug\net7.0\PizzaShop.Business.csproj.AssemblyReference.cache
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\obj\Debug\net7.0\PizzaShop.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\obj\Debug\net7.0\PizzaShop.Business.AssemblyInfoInputs.cache
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\obj\Debug\net7.0\PizzaShop.Business.AssemblyInfo.cs
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\obj\Debug\net7.0\PizzaShop.Business.csproj.CoreCompileInputs.cache
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\obj\Debug\net7.0\PizzaShop.Business.sourcelink.json
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\obj\Debug\net7.0\PizzaSho.AF5FDEC9.Up2Date
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\obj\Debug\net7.0\PizzaShop.Business.dll
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\obj\Debug\net7.0\refint\PizzaShop.Business.dll
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\obj\Debug\net7.0\PizzaShop.Business.pdb
+C:\Users\pct205\Desktop\Project\Pizza_Shop\PizzaShop.Business\obj\Debug\net7.0\ref\PizzaShop.Business.dll

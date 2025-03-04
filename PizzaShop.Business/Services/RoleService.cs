@@ -74,7 +74,7 @@ public class RoleService : IRoleService
 
             foreach (var permissionItem in permissionMatrixVM.Permissions)
             {
-                var rolePermission = role.Rolepermissions.FirstOrDefault(rp => rp.Permissionid == permissionItem.PermissionId );
+                var rolePermission = role.Rolepermissions.FirstOrDefault(rp => rp.Permissionid == permissionItem.PermissionId);
                 if (rolePermission != null)
                 {
                     // Update existing role permissions

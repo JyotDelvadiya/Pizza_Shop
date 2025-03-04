@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PizzaShop.Business.Interface;
@@ -22,15 +23,15 @@ public class HomeController : Controller
         _locationService = locationService;
     }
 
-     [HttpGet]
+    [HttpGet]
     public IActionResult Index()
     {
         var jwtToken = Request.Cookies["JWT"];
         var dashboardData = _userService.GetDashboardData(jwtToken);
-        
+
         ViewBag.UserName = dashboardData.UserName;
         ViewBag.Profileimage = dashboardData.ProfileImage;
-        
+
         return View();
     }
 
@@ -208,7 +209,7 @@ public class HomeController : Controller
     public IActionResult EditUserForm(EditUserVM editUserDetails)
     {
         var result = _userService.UpdateUser(editUserDetails);
-        
+
         if (!result.Success)
         {
             foreach (var error in result.Errors)
@@ -217,7 +218,7 @@ public class HomeController : Controller
             }
             return View(editUserDetails);
         }
-        
+
         TempData["SuccessMessage"] = "User information updated successfully.";
         return RedirectToAction("UserList", "Home");
     }
@@ -344,20 +345,20 @@ public class HomeController : Controller
     //         _context.Add(user);
     //         await _context.SaveChangesAsync();
 
-    //         // Handle profile image upload if a file is provided
-    //         if (addUserDetails.ProfileImageFile != null && addUserDetails.ProfileImageFile.Length > 0)
-    //         {
-    //             try
-    //             {
-    //                 await UploadProfileImage(addUserDetails.ProfileImageFile, account.Accountid);
-    //             }
-    //             catch (Exception ex)
-    //             {
-    //                 // Log error but continue with user creation
-    //                 _logger.LogError(ex, "Error uploading profile image for user {Username}", addUserDetails.Username);
-    //                 // We continue with user creation even if image upload fails
-    //             }
-    //         }
+    // // Handle profile image upload if a file is provided
+    // if (addUserDetails.ProfileImageFile != null && addUserDetails.ProfileImageFile.Length > 0)
+    // {
+    //     try
+    //     {
+    //         await UploadProfileImage(addUserDetails.ProfileImageFile, account.Accountid);
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         // Log error but continue with user creation
+    //         _logger.LogError(ex, "Error uploading profile image for user {Username}", addUserDetails.Username);
+    //         // We continue with user creation even if image upload fails
+    //     }
+    // }
 
     //         // Send the email
     //         await _emailService.SendEmailPasswordAsync(addUserDetails.Email, addUserDetails.Password);
@@ -384,7 +385,7 @@ public class HomeController : Controller
     public async Task<IActionResult> AddUserForm(AddUserVM addUserDetails)
     {
         var result = await _userService.AddUserAsync(addUserDetails);
-        
+
         if (!result.Success)
         {
             foreach (var error in result.Errors)
@@ -393,7 +394,7 @@ public class HomeController : Controller
             }
             return View(addUserDetails);
         }
-        
+
         TempData["SuccessMessage"] = "User created successfully. Credentials have been sent to User's email.";
         return RedirectToAction("UserList", "Home");
     }
@@ -498,7 +499,7 @@ public class HomeController : Controller
         return Json(userListDetails);
     }
 
-   [HttpGet]
+    [HttpGet]
     public async Task<IActionResult> GetStatesByCountryId(int countryId)
     {
         var states = await _locationService.GetStatesByCountryIdAsync(countryId);
@@ -791,11 +792,37 @@ public class HomeController : Controller
     public IActionResult Login()
     {
         LoginVM user = new LoginVM();
-        if (Request.Cookies.ContainsKey("UserEmail"))
+
+        if (Request.Cookies.ContainsKey("JWT"))
         {
-            return View("./Views/Home/Index.cshtml");
+            string token = Request.Cookies["JWT"] ?? string.Empty;
+
+            if (IsTokenValid(token))
+            {
+                return View("./Views/Home/Index.cshtml");
+            }
+            else
+            {
+                Response.Cookies.Delete("JWT");
+            }
         }
         return View("./Views/Authentication/Index.cshtml", user);
+    }
+
+    private bool IsTokenValid(string token)
+    {
+        try
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var jwtToken = tokenHandler.ReadJwtToken(token);
+
+            // Check if token is expired
+            return jwtToken.ValidTo > DateTime.UtcNow;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

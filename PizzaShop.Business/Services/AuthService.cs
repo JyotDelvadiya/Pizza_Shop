@@ -25,7 +25,7 @@ public class AuthService : IAuthService
     /// </summary>
     /// <param name="user">Login view model</param>
     /// <returns>Tuple with status code and token</returns>
-    public async Task<(int status, string token)> Login(LoginVM user)
+    public async Task<(int status, string token)> Login(LoginVM user, TimeSpan? tokenExpiration = null)
     {
         Account? accountDetails = await _accountRepository.GetAccountByEmailAsync(user.Email);
 
@@ -50,7 +50,7 @@ public class AuthService : IAuthService
             roleName = role?.Rolename ?? string.Empty;
         }
 
-        string token = _generateJWT.GenerateJwtToken(accountDetails, roleName) ?? string.Empty;
+        string token = _generateJWT.GenerateJwtToken(accountDetails, roleName, tokenExpiration) ?? string.Empty;
         accountDetails.Isrememberme = user.Isrememberme;
 
         await _accountRepository.SaveChangesAsync();

@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model PizzaShop.Data.ViewModel.MenuCategoryVM
+
+<div class="menuContent py-3 px-md-5 px-sm-1 display-6">
+    <div class="d-flex flex-row justify-content-between">
+        <div class="d-flex flex-row gap-2">
+            <div class="d-flex-inline pageTitle">Menu</div>
+        </div>
+    </div>
+    <div class="menuContainer bg-white my-3 shadow">
+        <div class="d-flex itemsAndModifiersBtns mb-3 px-3">
+            <div class="itemsBtn d-flex-inline align-items-center gap-2 active px-3">
+                <img src="~/images/icons/order-value.svg" style="width: 20px;" alt="">
+                Items
+            </div>
+            <div class="itemsBtn d-flex-inline align-items-center gap-2 px-3">
+                <img src="~/images/icons/icons8-four-squares-96.png" style="width: 20px;" alt="">
+                Modifiers
+            </div>
+        </div>
+        <partial name="~/Views/Menu/Tables/_ItemTable.cshtml" model="@Model" />
+    </div>
+</div>

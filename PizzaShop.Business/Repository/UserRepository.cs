@@ -311,6 +311,18 @@ public class UserRepository : IUserRepository
 
             await _emailService.SendEmailPasswordAsync(addUserDetails.Email, addUserDetails.Password);
 
+            if (addUserDetails.ProfileImageFile != null && addUserDetails.ProfileImageFile.Length > 0)
+            {
+                try
+                {
+                    await UploadProfileImageAsync(addUserDetails.ProfileImageFile, account.Accountid);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Error uploading profile image for user {Username}", addUserDetails.Username);
+                }
+            }
+
             return (true, null);
         }
         catch (Exception ex)

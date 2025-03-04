@@ -117,7 +117,7 @@ public partial class PizzaShopDbContext : DbContext
             entity.ToTable("categories");
 
             entity.Property(e => e.Categoryid)
-                .ValueGeneratedNever()
+                .HasDefaultValueSql("nextval('categoryid'::regclass)")
                 .HasColumnName("categoryid");
             entity.Property(e => e.Categorydescription)
                 .HasColumnType("character varying")

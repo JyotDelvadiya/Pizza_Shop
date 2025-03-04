@@ -1588,11 +1588,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj",
+      "projectUniqueName": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj",
       "projectName": "PizzaShop.Business",
-      "projectPath": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj",
+      "projectPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj",
       "packagesPath": "C:\\Users\\pct205\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\obj\\",
+      "outputPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pct205\\AppData\\Roaming\\NuGet\\NuGet.Config"

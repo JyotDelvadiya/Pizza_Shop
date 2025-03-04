@@ -53,7 +53,6 @@ public class AuthenticationController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
     {
-        // Verify token and update password
         var success = await _accountService.ResetPasswordAsync(
             model.Email,
             model.NewPassword
@@ -79,7 +78,6 @@ public class AuthenticationController : Controller
 
             if (success != null)
             {
-                // Redirect to success page or show success message
                 TempData["SuccessMessage"] = "Password reset instructions have been sent to your email.";
                 return RedirectToAction("Login", "Home");
             }
@@ -87,7 +85,6 @@ public class AuthenticationController : Controller
         }
         catch (Exception ex)
         {
-            // Log the error
             Console.WriteLine(ex);
             TempData["ErrorMessage"] = "An error occurred while sending the reset email.";
             return RedirectToAction("ForgotPassword", "Authentication");
@@ -107,7 +104,6 @@ public class AuthenticationController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult PassEmail(string email)
     {
-        // Redirect to forgot password with the email
         return Json(new
         {
             success = true,
@@ -121,9 +117,13 @@ public class AuthenticationController : Controller
     {
         if (!ModelState.IsValid)
         {
+            ModelState.AddModelError("Email", "Enter Valid Email");
             return View("~/Views/Authentication/Index.cshtml", user);
         }
-        (int status, string token) = await _authService.Login(user);
+
+        TimeSpan? tokenExpiration = user.Isrememberme ? TimeSpan.FromDays(7) : null;
+        (int status, string token) = await _authService.Login(user, tokenExpiration);
+        
         if (status == 0)
         {
             ModelState.AddModelError("Email", "Account not found");
@@ -136,18 +136,19 @@ public class AuthenticationController : Controller
         }
         else
         {
-            Response.Cookies.Append("JWT", token);
             var cookieOptions = new CookieOptions
             {
                 HttpOnly = true,
                 Secure = true,
                 SameSite = SameSiteMode.Strict
             };
-            if (user.Isrememberme != false)
+
+            if (user.Isrememberme)
             {
-                Response.Cookies.Append("UserEmail", user.Email, cookieOptions);
-                cookieOptions.Expires = DateTime.UtcNow.AddDays(30);
+                cookieOptions.Expires = DateTime.UtcNow.AddDays(7);
             }
+
+            Response.Cookies.Append("JWT", token, cookieOptions);
             return RedirectToAction("Index", "Home");
         }
     }
