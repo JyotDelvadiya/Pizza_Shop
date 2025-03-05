@@ -1,0 +1,114 @@
+@model PizzaShop.Data.ViewModel.MenuCategoryVM
+
+<div class="col px-3 right-container w-100">
+    <div class="itemsHeader d-flex flex-column  w-100">
+
+        <!-- ITEMS LIST HEADER -->
+        <div class="d-flex flex-row align-items-center justify-content-between w-100">
+            <div class="d-flex-inline itemsTitle">Items</div>
+            <div class="d-flex flex-row gap-2 ">
+                <div class="d-flex flex-row gap-2 itemsSearchBar">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <img src="~/images/icons/magnifying-glass-solid.svg" class="searchIcon" alt="">
+                </div>
+                <div class="d-flex justify-content-center align-items-center flex-row gap-2 itemsDeleteBar">
+                    <img src="~/images/icons/trash-solid.svg" class="dustbinIcon" alt="">
+                </div>
+                <a class="w-50 addUserBlock" data-bs-toggle="modal" data-bs-target="#addItemModal">
+                    <div class="d-flex flex-row justify-content-center align-items-center gap-2 addUser w-100 h-100">
+                        <img src="~/images/icons/plus-solid.svg" class="addUserIcon object-fit-cover p-0" alt="">
+                        <button class="addUserBtn d-flex justify-content-center p-0">Add Item</button>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="tab-content" id="pills-tabContent">
+            <!-- ITEMS LIST TABLE -->
+            <div class="tab-pane fade show active itemsTable" id="pills-sandwich" role="tabpanel"
+                aria-labelledby="pills-sandwich-tab" tabindex="0">
+                <table id="myTable" class="table">
+                    <thead class="text-center ">
+                        <tr>
+                            <th scope="col" class="d-flex justify-content-start gap-2 align-items-center">
+                                <input class="form-check-input" type="checkbox" value=""
+                                    style="border: 1px solid rgba(201, 201, 201, 0.609);" id="defaultCheck1">
+                                Name
+                            </th>
+                            <th scope="col">Item Type</th>
+                            <th scope="col">Rate</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Available</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @foreach (var menuItems in Model.Menuitems)
+                        {
+                            <tr>
+                                <th scope="row" class="d-flex justify-content-start gap-2 align-items-center">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                        style="border: 1px solid rgba(201, 201, 201, 0.609);" id="defaultCheck2">
+                                    <img src="~/images/dining-menu.png" style="width: 25px;" alt="">
+                                    @menuItems.Description
+                                </th>
+                                <td class="">
+                                    @if (menuItems.Itemtype)
+                                    {
+                                        <img src="~/images/icons/veg-icon.svg" style="width: 16px;" class="deleteUserIcon" alt="">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/images/icons/non-veg-icon.svg" style="width: 16px;" class="deleteUserIcon" alt="">
+                                    }
+                                </td>
+                                <td>@menuItems.Rate</td>
+                                <td>@menuItems.Categoryid</td>
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input flexSwitchCheckDefault" type="checkbox" role="switch"
+                                            id="" @(menuItems.Status.HasValue && menuItems.Status.Value ? "checked" : "")>
+                                    </div>
+                                </td>
+                                <td class="d-flex justify-content-center gap-2 align-items-center">
+                                    <a href="./editItem.html">
+                                        <img src="~/images/icons/pen-to-square-solid.svg" style="width: 18px;"
+                                            class="editUserIcon" alt="">
+                                    </a>
+                                    <img src="~/images/icons/trash-solid.svg" style="width: 16px;" class="deleteUserIcon"
+                                        alt="">
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-end align-items-center my-3 px-2 py-3 text-black fw-normal fs-6">
+                    <div class="d-flex align-items-center">
+                        <span class="me-2 fs-6">Items Per page:</span>
+                        <select id="itemsPerPage" class="form-select form-select-sm me-3" style="width: auto;">
+                            <option value="5" selected>5</option>
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="me-3 fs-6 d-flex align-items-center">Showing <span id="showing-start">1</span> - <span
+                                id="showing-end">5</span> of <span id="total-entries">13</span></span>
+                    </div>
+                    <div class="pagination-nav d-flex align-items-center">
+                        <button class="btn btn-outline-secondary btn-sm" id="prev-page" aria-label="Previous page">
+                            <span aria-hidden="true">&lt;</span>
+                        </button>
+                        <button class="btn btn-outline-secondary btn-sm ms-1" id="next-page" aria-label="Next page">
+                            <span aria-hidden="true">&gt;</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- End Pagination -->
+
+            </div>
+        </div>
+    </div>
+</div>

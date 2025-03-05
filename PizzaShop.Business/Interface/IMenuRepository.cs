@@ -4,5 +4,10 @@ using PizzaShop.Data.ViewModel;
 public interface IMenuRepository
 {
    IAsyncEnumerable<Category> GetAllCategoriesAsync();
-   Task<bool> AddCategoryAsync(Category category);
+   Task<Category?> CheckCategoryExistanceAsync(Category category);
+   Task AddCategoryAsync(Category category);
+   Task EditCategoryAsync(Category category);
+   Task<Category?> CheckCategoryExistanceExceptGivenAsync(Category category);
+   Task<bool> DeleteCategoryAsync(int categoryId);
+   IAsyncEnumerable<Menuitem> GetMenuItemsAsync(int categoryId);
 }

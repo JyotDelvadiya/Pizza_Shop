@@ -174,12 +174,10 @@
 
     <script>
         $(document).ready(function () {
-            $(document).ready(function () {
                 // Trigger validation on blur (when user clicks out of an input field)
                 $('input, select, textarea').on('blur', function () {
                     $(this).valid();
                 });
-            });
             // Profile image upload functionality
             const profileImage = $('#profileImage');
             const profileImageInput = $('#profileImageInput');

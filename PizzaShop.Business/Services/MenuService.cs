@@ -10,9 +10,10 @@ public class MenuService : IMenuService
         _menuRepository = menuRepository;
     }
 
-    public async Task<MenuCategoryVM> GetAllCategoriesAsync()
+    public async Task<MenuCategoryVM> GetAllCategoriesAsync(int categoryId)
     {
         var allCategories = _menuRepository.GetAllCategoriesAsync();
+        var allMenuItems = _menuRepository.GetMenuItemsAsync(categoryId);
 
         var menuCategory = new MenuCategoryVM();
 
@@ -24,8 +25,27 @@ public class MenuService : IMenuService
                 Categoryname = category.Categoryname,
                 Categorydescription = category.Categorydescription
             };
-
+            
             menuCategory.Categories.Add(CategoryItem);
+        }
+        await foreach (var menuItem in allMenuItems)
+        {
+            var MenuItem = new Menuitem
+            {
+                Menuitemid = menuItem.Menuitemid,
+                Categoryid = menuItem.Categoryid,
+                Itemtype = menuItem.Itemtype,
+                Rate = menuItem.Rate,
+                Status = menuItem.Status,
+                Description = menuItem.Description,
+                Itemimage = menuItem.Itemimage,
+                Taxpercentage = menuItem.Taxpercentage,
+                Shortcode = menuItem.Shortcode,
+                Defaulttax = menuItem.Defaulttax,
+                Unitid = menuItem.Unitid
+            };
+
+            menuCategory.Menuitems.Add(MenuItem);
         }
 
         return menuCategory;
@@ -39,7 +59,41 @@ public class MenuService : IMenuService
             Categorydescription = menuCategoryVM.Categorydescription
         };
 
-        var result = await _menuRepository.AddCategoryAsync(category);
-        return result;
+        var existingCategory = await _menuRepository.CheckCategoryExistanceAsync(category);
+        if (existingCategory == null)
+        {
+            await _menuRepository.AddCategoryAsync(category);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public async Task<bool> EditCategoryAsync(MenuCategoryVM menuCategoryVM)
+    {
+        var category = new Category
+        {
+            Categoryid = menuCategoryVM.categoryId,
+            Categoryname = menuCategoryVM.Categoryname,
+            Categorydescription = menuCategoryVM.Categorydescription
+        };
+        var existingCategory = await _menuRepository.CheckCategoryExistanceExceptGivenAsync(category);
+        if (existingCategory == null)
+        {
+            await _menuRepository.EditCategoryAsync(category);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public async Task<bool> DeleteCategoryAsync(int categoryId)
+    {
+        var result = await _menuRepository.DeleteCategoryAsync(categoryId);
+        return result ? true : false;
     }
 }
