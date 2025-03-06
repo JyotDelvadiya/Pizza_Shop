@@ -278,8 +278,10 @@ public class UserRepository : IUserRepository
             errors.Add("Phonenumber", "This phone number is already registered.");
 
         if (errors.Count > 0)
+        {
+            addUserDetails.Countries = await _context.Countries.ToListAsync();
             return (false, errors);
-
+        }
         try
         {
             var account = new Account
@@ -388,7 +390,7 @@ public class UserRepository : IUserRepository
         user.Address = editUserDetails.Address;
 
         _context.SaveChanges();
-        return (true, null);
+        return (true, null); 
     }
 
     public (bool Success, string Message) DeleteUser(string email)

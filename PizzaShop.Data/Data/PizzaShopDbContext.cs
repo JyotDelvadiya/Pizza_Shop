@@ -291,10 +291,12 @@ public partial class PizzaShopDbContext : DbContext
 
             entity.ToTable("menuitems");
 
+            entity.HasIndex(e => new { e.Menuitemid, e.Itemname }, "menuitems_menuitemid_itemname_key").IsUnique();
+
             entity.HasIndex(e => e.Shortcode, "menuitems_shortcode_key").IsUnique();
 
             entity.Property(e => e.Menuitemid)
-                .ValueGeneratedNever()
+                .HasDefaultValueSql("nextval('menuitemid'::regclass)")
                 .HasColumnName("menuitemid");
             entity.Property(e => e.Categoryid).HasColumnName("categoryid");
             entity.Property(e => e.Createdat)
@@ -310,7 +312,13 @@ public partial class PizzaShopDbContext : DbContext
             entity.Property(e => e.Description).HasColumnName("description");
             entity.Property(e => e.Isdeleted).HasColumnName("isdeleted");
             entity.Property(e => e.Itemimage).HasColumnName("itemimage");
+            entity.Property(e => e.Itemname)
+                .HasMaxLength(255)
+                .HasColumnName("itemname");
             entity.Property(e => e.Itemtype).HasColumnName("itemtype");
+            entity.Property(e => e.Quantity)
+                .HasDefaultValueSql("0")
+                .HasColumnName("quantity");
             entity.Property(e => e.Rate).HasColumnName("rate");
             entity.Property(e => e.Shortcode)
                 .HasMaxLength(50)

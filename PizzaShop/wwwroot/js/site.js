@@ -5,8 +5,6 @@
     // Password toggle functionality
     if (togglePassword && password) {
         togglePassword.addEventListener("click", function () {
-            console.log('togglePassword clicked');
-            
             
             const type = password.getAttribute("type") === "password" ? "text" : "password";
             

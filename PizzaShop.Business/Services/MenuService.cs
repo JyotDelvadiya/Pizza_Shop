@@ -33,9 +33,11 @@ public class MenuService : IMenuService
             var MenuItem = new Menuitem
             {
                 Menuitemid = menuItem.Menuitemid,
+                Itemname = menuItem.Itemname,
                 Categoryid = menuItem.Categoryid,
                 Itemtype = menuItem.Itemtype,
                 Rate = menuItem.Rate,
+                Quantity = menuItem.Quantity,
                 Status = menuItem.Status,
                 Description = menuItem.Description,
                 Itemimage = menuItem.Itemimage,
@@ -47,7 +49,6 @@ public class MenuService : IMenuService
 
             menuCategory.Menuitems.Add(MenuItem);
         }
-
         return menuCategory;
     } 
     

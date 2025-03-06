@@ -2,7 +2,6 @@
 
 <div class="col px-3 right-container w-100">
     <div class="itemsHeader d-flex flex-column  w-100">
-
         <!-- ITEMS LIST HEADER -->
         <div class="d-flex flex-row align-items-center justify-content-between w-100">
             <div class="d-flex-inline itemsTitle">Items</div>
@@ -49,7 +48,7 @@
                                     <input class="form-check-input" type="checkbox" value=""
                                         style="border: 1px solid rgba(201, 201, 201, 0.609);" id="defaultCheck2">
                                     <img src="~/images/dining-menu.png" style="width: 25px;" alt="">
-                                    @menuItems.Description
+                                    @menuItems.Itemname
                                 </th>
                                 <td class="">
                                     @if (menuItems.Itemtype)
@@ -62,7 +61,7 @@
                                     }
                                 </td>
                                 <td>@menuItems.Rate</td>
-                                <td>@menuItems.Categoryid</td>
+                                <td>@menuItems.Quantity</td>
                                 <td>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input flexSwitchCheckDefault" type="checkbox" role="switch"
@@ -110,5 +109,188 @@
 
             </div>
         </div>
+        @* <div class="modal fade"  id="addItemModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="newItemLabel" aria-hidden="true" >
+            <div class="modal-dialog addItem-modal modal-dialog-centered fw-normal" >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="newItemLabel">Add Item</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#">
+                            <div class="row">
+                                <div class="col-12 col-md-8">
+                                    <div class="row align-items-center">
+                                        <div class="form-floating col-12 col-md-6 p-1">
+                                            <select class="form-select" id="itemCategorySelect" aria-label="Floating label select example">
+                                            <option selected>Select category</option>
+                                            <option value="chef">Chef</option>
+                                            <option value="admin">Admin</option>
+                                            <option value="accountManager">Account Manager</option>
+                                            </select>
+                                            <label class="" asp-for="Menuitems.Categoryid">Cateogries*</label>
+                                        </div>
+                                    <div class="form-floating col-12 col-md-6 p-1">
+                                        <input type="text" class="form-control" name="item-name"
+                                            id="item-name" required placeholder="name">
+                                        <label asp-for="item-name" class="">Name*</label>
+                                    </div>
+                                </div>
+                                <div class="row my-2 align-items-center">
+                                    <div class="form-floating col-12 col-md-3 p-1">
+                                        <select class="form-select" id="itemTypeSelect" aria-label="Floating label select example">
+                                        <option selected>ItemType</option>
+                                        <option value="chef">Chef</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="accountManager">Account Manager</option>
+                                        </select>
+                                        <label class="" asp-for="itemTypeSelect">Item Type*</label>
+                                    </div>
+                                    <div class="form-floating col-12 col-md-3 p-1">
+                                        <input type="text" class="form-control" name="itemRate"
+                                            id="item-rate" required placeholder="name">
+                                        <label asp-for="item-rate" class="">Rate*</label>
+                                    </div>
+                                    <div class="form-floating col-12 col-md-3 p-1">
+                                        <input type="text" class="form-control" name="itemQuantity"
+                                            id="item-quantity" required placeholder="name">
+                                        <label asp-for="item-quantity" class="">Quantity*</label>
+                                    </div>
+                                    <div class="form-floating col-12 col-md-3 p-1">
+                                        <select class="form-select" id="itemUnitSelect" aria-label="Floating label select example">
+                                            <option selected>ItemType</option>
+                                            <option value="chef">Chef</option>
+                                            <option value="admin">Admin</option>
+                                            <option value="accountManager">Account Manager</option>
+                                        </select>
+                                        <label class="" asp-for="itemUnitSelect">Unit*</label>
+                                    </div>
+                                </div>
+                                    <div class="row my-2 align-items-center" style="height: 65px;">
+                                        <div class="form-floating col-6 col-md-3 h-100">
+                                            <div class="form-check form-switch h-100 gap-2 d-flex align-items-center justify-content-start">
+                                                <input class="form-check-input h-50 w-50 p-0" type="checkbox" role="switch" id="itemSwitchAvailable" checked>
+                                                <label asp-for="itemSwitchAvailable" class=""> Available</label>
+                                            </div>
+                                        </div>
+                            
+                                        <div class="form-floating col-6 col-md-3 h-100">
+                                            <div class="form-check form-switch h-100 gap-2 d-flex align-items-center">
+                                                <input class="form-check-input h-50 w-50 p-0" type="checkbox" role="switch" id="itemSwitchTax" checked>
+                                                <label asp-for="itemSwitchTax" class="mx-2"> DefaultTax</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-floating col-12 col-md-3 p-1">
+                                            <input type="text" class="form-control" name="taxPercentage"
+                                                id="item-tax" required placeholder="name">
+                                            <label asp-for="item-tax" class="">Tax Percentage</label>
+                                        </div>
+                                        <div class="form-floating col-12 col-md-3 p-1">
+                                            <input type="text" class="form-control" name="shortCode"
+                                                id="item-code" required placeholder="name">
+                                            <label asp-for="item-code" class="">Short Code</label>
+                                        </div>
+                                    </div>
+                                    <div class="row my-2 align-items-center">
+                                        <div class="form-floating my-auto p-1 col-12 pt-2">
+                                            <textarea class="form-control" placeholder="Leave a comment here"
+                                                id="itemDescription" style="height: 100px"></textarea>
+                                            <label asp-for="itemDescription">Description</label>
+                                        </div>
+                                    </div>
+                                    <div class="row my-2 align-items-center">
+                                        <div class="col-12  row">
+                                            <label asp-for="item-upload-btn">Upload Image</label>
+                                            <div class="file upload position-relative overflow-hidden item-btn-custom" >
+                                                <div class="d-flex gap-2 justify-content-center align-items-center" style="height: 100px;">
+                                                    <img src="./images/icons/cloud.svg" class="small-image" alt="upload">
+                                                    <span>Drag and Drop or Browse files</span>
+                                                    <p id="item-file-name"></p>
+                                                </div>
+                                                <input type="file" id="item-upload-btn" class="position-absolute file-input-btn" name="file" accept="image/*"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 item-modifier-bg p-3" >
+                                    <div class="row align-items-center">
+                                        <div class=" col-12  p-1">
+                                            <select class="form-select" id="modifierGroupSelect">
+                                            <option selected>Select Modifier Group(s)</option>
+                                            <option value="chef">Chef</option>
+                                            <option value="admin">Admin</option>
+                                            <option value="accountManager">Account Manager</option>
+                                            </select>
+                                        </div>
+                                        <div class=" col-12  p-1 mt-3">
+                                            <div class="d-flex flex-column">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="mod-group-name">
+                                                        <span>Modifier Group Name</span>
+                                                    </div>
+                                                <div>
+                                                <a href="#">
+                                                    <button class="btn btn-light btn-sm">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between m-2">
+                                            <div class="col-12 col-md-6 p-1 ">
+                                                <select class="form-select" id="modOption1" aria-label="Floating label select example">
+                                                    <option selected>0</option>
+                                                    <option value="chef">1</option>
+                                                    <option value="admin">2</option>
+                                                    <option value="accountManager">3</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 col-md-6 p-1">
+                                                <select class="form-select" id="modOption2" aria-label="Floating label select example">
+                                                <option selected>0</option>
+                                                <option value="chef">1</option>
+                                                <option value="admin">2</option>
+                                                <option value="accountManager">3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between m-2">
+                                            <div class="">
+                                                <ul>
+                                                    <li>Regular</li>
+                                                </ul>
+                                            </div>
+                                            <div class="">
+                                                <span>100</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>        
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary">Yes</button>
+            </div>
+        </div> *@
     </div>
 </div>
+@* 
+    @media  (min-width:576px){
+        .addItem-modal
+        {
+            max-width: 70% !important;
+        }   
+    }   
+    .item-modifier-bg{
+        background-color:#fdf5e6;
+    }
+    .modifier-group-name{
+        color: #848787;
+        font-weight: bold;
+        font-size: large;
+    }
+*@

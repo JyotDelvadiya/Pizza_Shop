@@ -41,6 +41,10 @@ public partial class Menuitem
 
     public bool Isdeleted { get; set; }
 
+    public string Itemname { get; set; } = null!;
+
+    public decimal? Quantity { get; set; }
+
     public virtual Category Category { get; set; } = null!;
 
     public virtual ICollection<Favouriteitem> Favouriteitems { get; } = new List<Favouriteitem>();

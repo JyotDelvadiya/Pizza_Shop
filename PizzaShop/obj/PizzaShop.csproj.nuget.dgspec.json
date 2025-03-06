@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop\\PizzaShop.csproj": {}
+    "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop\\PizzaShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj": {
+    "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj",
+        "projectUniqueName": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj",
         "projectName": "PizzaShop.Business",
-        "projectPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj",
+        "projectPath": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj",
         "packagesPath": "C:\\Users\\pct205\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\obj\\",
+        "outputPath": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pct205\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +26,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj": {
-                "projectPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj"
+              "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj": {
+                "projectPath": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj"
               }
             }
           }
@@ -84,14 +84,14 @@
         }
       }
     },
-    "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj": {
+    "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj",
+        "projectUniqueName": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj",
         "projectName": "PizzaShop.Data",
-        "projectPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj",
+        "projectPath": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj",
         "packagesPath": "C:\\Users\\pct205\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\obj\\",
+        "outputPath": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pct205\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -158,14 +158,14 @@
         }
       }
     },
-    "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop\\PizzaShop.csproj": {
+    "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop\\PizzaShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop\\PizzaShop.csproj",
+        "projectUniqueName": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop\\PizzaShop.csproj",
         "projectName": "PizzaShop",
-        "projectPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop\\PizzaShop.csproj",
+        "projectPath": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop\\PizzaShop.csproj",
         "packagesPath": "C:\\Users\\pct205\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop\\obj\\",
+        "outputPath": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pct205\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -180,11 +180,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj": {
-                "projectPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj"
+              "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj": {
+                "projectPath": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Business\\PizzaShop.Business.csproj"
               },
-              "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj": {
-                "projectPath": "C:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj"
+              "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj": {
+                "projectPath": "c:\\Users\\pct205\\Desktop\\Project\\Pizza_Shop\\PizzaShop.Data\\PizzaShop.Data.csproj"
               }
             }
           }

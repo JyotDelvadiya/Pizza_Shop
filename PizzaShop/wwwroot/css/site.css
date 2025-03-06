@@ -208,11 +208,12 @@ body {
 
 .form-floating>.form-control:focus~label,
 .form-floating>.form-control:not(:placeholder-shown)~label,
-.form-floating>.form-select~label{
+.form-floating>.form-select~label {
     opacity: 1;
 }
 
-.form-floating>.form-control:focus, .form-floating>.form-control:not(:placeholder-shown) {
+.form-floating>.form-control:focus,
+.form-floating>.form-control:not(:placeholder-shown) {
     padding-top: 1.625rem;
     padding-bottom: 1.5rem;
 }
@@ -887,13 +888,16 @@ input[type="color"]:focus,
     td {
         min-width: 250px;
     }
+
     .toggle {
         display: block !important;
         border-color: none;
     }
+
     .menuContainer {
         z-index: 1 !important;
     }
+
     .toggle i {
         font-size: 2em;
         color: white;
@@ -906,10 +910,12 @@ input[type="color"]:focus,
     .categoriesContainer {
         width: 100%;
     }
+
     .itemsTable tbody td:nth-child(2),
     .itemsTable thead th:nth-child(2) {
         display: none !important;
     }
+
     /* PERMISSION PAGE */
     .permissionContainer .form-floating label {
         margin-top: 0px;
@@ -927,7 +933,40 @@ input[type="color"]:focus,
         min-width: 250px;
         z-index: 999;
     }
+
     .offcanvas button {
         display: none;
     }
+}
+
+@media (min-width:576px) {
+    .addItem-modal {
+        max-width: 70% !important;
+    }
+}
+
+.item-modifier-bg {
+    background-color: #fdf5e6;
+}
+.form-switch .form-check-input {
+    /* Default (unchecked) state */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
+}
+
+.form-switch .form-check-input:focus {
+    /* Keep the same image when focused but unchecked */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
+    border: 0.5px solid gray;
+}
+
+.form-switch .form-check-input:checked {
+    /* Checked state */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    background-color: #0066b2;
+}
+
+.form-switch .form-check-input:checked:focus {
+    /* Checked and focused state */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    border: 0.5px solid gray;
 }
